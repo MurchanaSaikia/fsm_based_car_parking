@@ -1,0 +1,176 @@
+module car_park_tb_1(
+
+    );
+    // Inputs
+  reg clock_in;
+  reg rst_in;
+  reg front_sensor;
+  reg back_sensor;
+  reg [1:0] password;
+
+
+  // Outputs
+  wire G_led;
+  wire R_led;
+ 
+// fpga4student.com FPGA projects, Verilog projects, VHDL projects
+  // Instantiate the Unit Under Test (UUT)
+  car_park_1 uut (
+  .clock_in(clock_in), 
+  .rst_in(rst_in), 
+  .front_sensor(front_sensor), 
+  .back_sensor(back_sensor), 
+  .password(password),  
+  .G_led(G_led), 
+  .R_led(R_Led)
+ );
+ initial begin
+ clock_in = 0;
+ forever #10 clock_in = ~clock_in;
+ end
+ initial begin
+ // Initialize Inputs
+ rst_in = 0;
+ front_sensor = 0;
+ back_sensor = 0;
+ password = 0;
+
+ // Wait 100 ns for global reset to finish
+ #100;
+      rst_in = 1;
+ #20;
+ front_sensor = 1;
+ #30;
+  password = 3;
+ #20;
+ #50;
+ front_sensor= 0;
+
+  password = 0;
+#30;
+ password = 1;
+front_sensor = 1;
+#20;
+ #50;
+ front_sensor= 0;
+#20;
+ front_sensor = 1;
+ #30;
+  password = 3;
+ #40;
+ front_sensor= 0;
+#20;
+ #50;
+ front_sensor= 1;
+
+  password = 3;
+#30;
+ #50;
+ front_sensor= 0;
+ #50;
+ front_sensor= 1;
+
+ password = 3;
+front_sensor = 1;
+ #30;
+  password = 3;
+ #40;
+ #50;
+ front_sensor= 0;
+
+  password = 3;
+#30;
+ #50;
+ front_sensor= 0;
+ #50;
+ front_sensor= 1;
+
+ password = 3;
+ #30;
+  #50;
+ front_sensor= 0;
+ #50;
+ front_sensor= 1;
+
+  password = 3;
+ #40;
+ #50;
+ front_sensor= 0;
+ #50;
+ front_sensor= 1;
+
+  password = 3;
+#30;
+ #50;
+ front_sensor= 0;
+ #50;
+ front_sensor= 1;
+
+ password = 3;
+ #30;
+  #50;
+ front_sensor= 0;
+ #50;
+ front_sensor= 1;
+
+  password = 3;
+ #40;
+ #50;
+ front_sensor= 0;
+ #50;
+ front_sensor= 1;
+
+  password = 3;
+#30;
+ #50;
+ front_sensor= 0;
+ #50;
+ front_sensor= 1;
+
+ password = 3;
+
+ #20;
+front_sensor= 0;
+ #20;
+
+ back_sensor =1;
+ #50;
+  back_sensor =0;
+
+  password = 3;
+ #20;
+ #50;
+ front_sensor= 1;
+ password = 3;
+ #200;
+ back_sensor =1;
+ #50;
+  password = 0;
+
+front_sensor = 1;
+#100;
+ password = 3;
+
+ #200;
+ back_sensor =0;
+ #50;
+  password = 3;
+   #100;
+   #20;
+ front_sensor = 1;
+ back_sensor = 1;
+ #100;
+ 
+ password = 3;
+ #200;
+ back_sensor =1;
+ #50;
+  password = 0;
+
+front_sensor = 1;
+#100;
+ password = 3;
+ #100;
+ $finish();
+ end
+endmodule
