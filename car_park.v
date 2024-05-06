@@ -24,7 +24,7 @@ module car_park_1(
  
   
  // change state
-// fpga4student.com FPGA projects, Verilog projects, VHDL projects
+
  always @(*)
  begin
  case(current_state)
